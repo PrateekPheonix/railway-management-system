@@ -1,5 +1,4 @@
 import "./trainitem.css";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { createBook } from "../../api/index";
 
@@ -10,6 +9,7 @@ const TrainItem = (props) => {
     e.preventDefault();
     const { data } = await createBook(user.id, props.train._id);
     console.log(data);
+    alert("Ticket Booked for "+user.name+" on "+props.train.name);
   };
 
   const buttonVisiblity = () => {
@@ -20,14 +20,14 @@ const TrainItem = (props) => {
   return (
     <div className="train-item">
       <h2 id="train-name">{props.train.name}</h2>
-      <h3 id="start-destination">
+      <h4 id="start-destination">
         From : {props.train.startpoint} - To: {props.train.destination}
-      </h3>
+      </h4>
       <div id="date-book">
-        <h3 id="startDate">
+        <h4 id="startDate">
           Starting Date : {props.train.startDate.slice(0, 10)}
-        </h3>
-        <h3 id="price">Ticket Price: {props.train.price}rs</h3>
+        </h4>
+        <h4 id="price">Ticket Price: ₹{props.train.price}</h4>
         <button style={buttonVisiblity()} onClick={buttonClick}>
           Book Now
         </button>

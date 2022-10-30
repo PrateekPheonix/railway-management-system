@@ -22,7 +22,7 @@ const App = () => {
     if (token) {
       dispatch(check());
     } else {
-      console.log("you are not logged in");
+      console.log("Please Login to continue");
     }
   });
 

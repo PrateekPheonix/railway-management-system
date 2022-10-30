@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { login } from "../../actions/user";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 export default () => {
@@ -28,12 +29,14 @@ export default () => {
   };
 
   const onSubmit = (e) => {
+    // let navigate = useNavigate();
     e.preventDefault();
     dispatch(login(form.email, form.password));
     setForm({
       email: "",
       password: "",
     });
+    // navigate("/");
   };
 
   return (
