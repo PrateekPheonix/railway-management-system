@@ -26,19 +26,24 @@ const createBook = async (req, res) => {
     train: train_available._id,
   });
 
+  let newSeats = train_available.seats
+
   await newBook
     .save()
     .then((book) => {
+      newSeats = newSeats - 1;
       res.json({ book });
     })
     .catch((err) => {
       res.json({ err });
     });
 
+
   // updating the train's users
   await train_available
     .updateOne({
       users: [...train_available.users, user_available._id],
+      seats: newSeats,
     })
     .catch((err) => {
       console.log(err);
@@ -85,20 +90,24 @@ const deleteBook = async (req, res) => {
     return String(user_id) != String(user);
   });
 
-  //removing element from train
-  trainExist
-    .updateOne({
-      users: usersOfTrain,
-    })
-    .catch((err) => res.json({ err }));
+  let newSeats = trainExist.seats
 
   // deleting the booking
   await bookExist
     .deleteOne()
     .then((book) => {
+      newSeats = newSeats + 1
       res.json({
         book,
       });
+    })
+    .catch((err) => res.json({ err }));
+
+  //removing element from train
+  trainExist
+    .updateOne({
+      users: usersOfTrain,
+      seats: newSeats
     })
     .catch((err) => res.json({ err }));
 };

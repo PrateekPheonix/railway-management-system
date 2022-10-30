@@ -26,10 +26,12 @@ description: adds a new train
 const postTrain = async (req, res) => {
   const {
     name,
+    trainId,
     destination,
     startpoint,
     startDate,
     reachDate,
+    seats,
     price,
   } = req.body;
 
@@ -37,15 +39,17 @@ const postTrain = async (req, res) => {
   if (
     !name ||
     !destination ||
+    !trainId ||
     !startpoint ||
     !startDate ||
     !reachDate ||
+    !seats ||
     !price
   )
     return res.status(400).json({ msg: "enter all the credentials" });
 
   const duplicateCheck = await train.findOne({
-    name,
+    trainId,
   });
 
   if (duplicateCheck)
@@ -54,10 +58,12 @@ const postTrain = async (req, res) => {
   // add new train
   const newTrain = await new train({
     name,
+    trainId,
     destination,
     startpoint,
     startDate,
     reachDate,
+    seats,
     price,
   });
 
@@ -66,11 +72,13 @@ const postTrain = async (req, res) => {
     .then((train) => {
       return res.status(200).json({
         name: train.name,
+        trainId: train.trainId,
         users: train.populate("users").users,
         destination: train.destination,
         startpoint: train.startpoint,
         startDate: train.startDate,
         reachDate: train.reachDate,
+        seats: train.seats,
         price: train.price,
       });
     })
@@ -97,11 +105,13 @@ const getTrain = async (req, res) => {
   res.json({
     id: outTrain._id,
     name: outTrain.name,
+    trainId: outTrain.trainId,
     users: outTrain.users,
     destination: outTrain.destination,
     startpoint: outTrain.startpoint,
     startDate: outTrain.startDate,
     reachDate: outTrain.reachDate,
+    seats: outTrain.seats,
     price: outTrain.price,
   });
 };
@@ -112,13 +122,13 @@ route: /api/train/
 description: deletes a train based on id
 */
 const deleteTrain = async (req, res) => {
-  const { id } = req.body;
+  const { trainId } = req.body;
 
   // validation
-  if (!id) return res.status(400).json({ msg: "id not found" });
+  if (!trainId) return res.status(400).json({ msg: "id not found" });
 
   const traindel = await train.findOne({
-    _id: id,
+    trainId
   });
 
   if (!traindel) return res.json({ msg: "Id invalid" });

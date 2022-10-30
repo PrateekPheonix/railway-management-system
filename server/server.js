@@ -32,7 +32,7 @@ mongoose
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
-  .then(() => console.log(`Database Connection Established at ${27017}`))
+  .then(() => console.log(`Database Connection Established!`))
   .catch((err) => console.log(err));
 
 //port

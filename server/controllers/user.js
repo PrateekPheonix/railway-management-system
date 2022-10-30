@@ -164,6 +164,38 @@ const returnCurrentUser = async (req, res) => {
   });
 };
 
+
+/*
+method: GET
+route: /api/user/changepass
+description: deletes a single user given the id
+*/
+const changePassword = async (req, res) => {
+
+  const { currPass, newPass } = req.body;
+  const { token } = req.cookies;
+
+  try {
+    var decoded = jwt.verify(token, process.env.TOKENKEY);
+  } catch (err) {
+    console.log(err);
+  }
+  const userExist = await user
+    .findOne({ email: decoded.email })
+    .catch((err) => console.log(err))
+
+
+  if (userExist.encry_password === crypto.createHmac("sha256", userExist.salt).update(currPass).digest("hex")) {
+    const result = await user.updateOne({ email: userExist.email }, { encry_password: crypto.createHmac("sha256", userExist.salt).update(newPass).digest("hex") })
+    if (result.nModified === 1) {
+      res.status(200).send("Password Successfully Changed")
+    }
+  } else {
+    res.status(400).send("Incorrect Current Password")
+  }
+
+};
+
 // exporting the modules
 module.exports = {
   createUser,
@@ -171,4 +203,5 @@ module.exports = {
   getAllUsers,
   deleteUser,
   returnCurrentUser,
+  changePassword,
 };

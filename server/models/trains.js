@@ -6,6 +6,11 @@ const TrainSchema = new mongoose.Schema({
     type: String,
     unique: true,
   },
+  trainId: {
+    trim: true,
+    type: Number,
+    unique: true,
+  },
   users: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -26,6 +31,9 @@ const TrainSchema = new mongoose.Schema({
   },
   reachDate: {
     type: Date,
+  },
+  seats: {
+    type: Number,
   },
   price: {
     type: Number,
