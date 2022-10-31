@@ -4,6 +4,7 @@ import { getBooks } from "../../actions/book";
 import BookDetail from "./BookDetail";
 import * as api from "../../api";
 import "./Profile.css";
+import { Link } from "react-router-dom";
 import ChangePassword from "../ChangePassword/ChangePassword";
 
 const Profile = () => {
@@ -27,14 +28,22 @@ const Profile = () => {
   if (user.name) {
     return (
       <div className="profile-container">
-        <h2 id="profile-name">{user.name}</h2>
-        <h2 className="user-info">Email : {user.email}</h2>
-        <h2 className="user-info">Phone Number : {user.phone}</h2>
-        <ChangePassword />
-        <h2 id="trains-booked">Trains Booked: </h2>
-        {filt_books.map((book) => {
-          return <BookDetail key={book._id} book={book} onDelete={onDelete} />;
-        })}
+        <div className="profile">
+          <h2 id="profile-name">Hello, {user.name}</h2>
+          <h2 className="user-info">Email : {user.email}</h2>
+          <h2 className="user-info">Phone Number : {user.phone}</h2>
+          <Link className="user-info" id="changePass" to="/changepassword">
+            Change Password
+          </Link>
+        </div>
+        <div className="books">
+          <h2 id="trains-booked">Trains Booked </h2>
+          {filt_books.map((book) => {
+            return (
+              <BookDetail key={book._id} book={book} onDelete={onDelete} />
+            );
+          })}
+        </div>
       </div>
     );
   } else {

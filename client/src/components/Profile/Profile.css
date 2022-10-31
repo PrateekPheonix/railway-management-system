@@ -1,9 +1,4 @@
 .profile-container {
-  background-image: linear-gradient(
-    rgb(82, 81, 81),
-    rgb(122, 109, 109),
-    rgba(236, 21, 21, 0.644)
-  );
   margin: 7em auto auto auto;
   display: flex;
   width: 40em;
@@ -18,11 +13,6 @@
   font-family: sans-serif;
 }
 
-#profile-name {
-  text-align: center;
-  margin-top: 0.5em;
-  margin-bottom: 2em;
-}
 
 .profile-container > img {
   margin: -7em auto auto auto;
@@ -32,13 +22,42 @@
   background-color: rgb(241, 49, 49);
 }
 
-.user-info {
-  background-color: black;
-  padding: 0.5em 1em 1em 0em;
-  text-align: center;
-}
 
 #trains-booked {
   margin-top: 1em;
   color: black;
+}
+
+.profile{
+  display: flex;
+  flex-direction: column;
+  background-color: aliceblue;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+  border-radius: 0.5em;
+  padding: 1em;
+}
+
+.user-info{
+  font-size: 1.5em;
+  padding: 0.5em;
+}
+
+#changePass{
+  text-decoration: none;
+  background-color: coral;
+  border-radius: 1em;
+  color: aliceblue;
+}
+
+.books
+{
+  display: flex;
+  flex-direction: column;
+}
+
+#trains-booked{
+  align-self: center;
+  color: aliceblue;
 }

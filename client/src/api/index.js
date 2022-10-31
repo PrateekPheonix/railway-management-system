@@ -27,16 +27,19 @@ export const logoutUser = async () => {
 };
 
 export const changePassword = async (currPass, newPass) => {
-  return await axios.get(
-    url + "user/changepass",
-    {
-      currPass,
-      newPass,
-    },
-    {
-      withCredentials: true,
-    }
-  );
+  return await axios
+    .post(
+      url + "user/changepass",
+      {
+        currPass,
+        newPass,
+      },
+      {
+        withCredentials: true,
+      }
+    )
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 };
 
 export const checkUser = async () => {
@@ -87,24 +90,26 @@ export const register = async (name, email, password, phone) => {
 };
 
 export const createTrain = async (
-  number,
+  trainId,
   name,
   destination,
   startpoint,
   startDate,
   reachDate,
-  price
+  price,
+  seats
 ) => {
   const { data } = await axios.post(
     url + "train",
     {
-      number,
+      trainId,
       name,
       destination,
       startpoint,
       startDate,
       reachDate,
       price,
+      seats,
     },
     {
       withCredentials: true,
@@ -115,7 +120,7 @@ export const createTrain = async (
 
 export const deleteTrain = async (id) => {
   const { data } = await axios.delete(url + "train", {
-    data: { id },
+    trainId: { id },
   });
   console.log(data);
 };
