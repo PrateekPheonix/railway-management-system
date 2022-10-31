@@ -2,7 +2,7 @@ import * as api from "../../api";
 import "./BookDetail.css";
 import { useEffect, useState } from "react";
 
-export default (props) => {
+const BookDetail = (props) => {
   const [train, setTrain] = useState({});
 
   useEffect(() => {
@@ -27,3 +27,5 @@ export default (props) => {
     </div>
   );
 };
+
+export default BookDetail;

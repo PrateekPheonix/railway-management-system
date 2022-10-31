@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as api from "../../api";
 import "./Admin.css";
 import Login from "../User/Login";
