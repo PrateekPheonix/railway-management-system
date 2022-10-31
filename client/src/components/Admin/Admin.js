@@ -8,34 +8,37 @@ const Admin = (props) => {
   const user = useSelector((state) => state.user);
   const [deleteField, setDeleteField] = useState("");
   const [createFields, setCreateFields] = useState({
-    number: "",
+    trainId: "",
     name: "",
     destination: "",
     startPoint: "",
     startDate: "",
     reachDate: "",
     price: "",
+    seats: "",
   });
 
   const createSubmit = (e) => {
     e.preventDefault();
     api.createTrain(
-      createFields.number,
+      createFields.trainId,
       createFields.name,
       createFields.destination,
       createFields.startPoint,
       createFields.startDate,
       createFields.reachDate,
-      createFields.price
+      createFields.seats,
+      createFields.price,
     );
     setCreateFields({
-      number: "",
+      trainId: "",
       name: "",
       destination: "",
       startPoint: "",
       startDate: "",
       reachDate: "",
       price: "",
+      seats: "",
     });
     alert("Train created");
   };
@@ -56,9 +59,9 @@ const Admin = (props) => {
           <h2 className="heading"> Create Train</h2>
           <input
             onChange={(e) =>
-              setCreateFields({ ...createFields, number: e.target.value })
+              setCreateFields({ ...createFields, trainId: e.target.value })
             }
-            value={createFields.number}
+            value={createFields.trainId}
             placeholder="Train Number"
             type="number"
             required
@@ -114,6 +117,15 @@ const Admin = (props) => {
             }
             value={createFields.price}
             placeholder="Price"
+            type="text"
+            required
+          />
+          <input
+            onChange={(e) =>
+              setCreateFields({ ...createFields, seats: e.target.value })
+            }
+            value={createFields.seats}
+            placeholder="Seats Available"
             type="text"
             required
           />

@@ -13,6 +13,7 @@ import Profile from "./components/Profile/Profile";
 import Signup from "./components/User/Signup";
 import Admin from "./components/Admin/Admin";
 import NotFound from "./components/NotFound/NotFound";
+import ChangePassword from "./components/ChangePassword/ChangePassword";
 
 const App = () => {
   const token = Cookies.get("token");
@@ -55,6 +56,10 @@ const App = () => {
 
         <Route exact path="/profile">
           <Profile />
+        </Route>
+
+        <Route exact path="/changepassword">
+          <ChangePassword />
         </Route>
 
         <Route component={NotFound} />

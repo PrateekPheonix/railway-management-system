@@ -9,7 +9,8 @@ const TrainItem = (props) => {
     e.preventDefault();
     const { data } = await createBook(user.id, props.train._id);
     console.log(data);
-    alert("Ticket Booked for "+user.name+" on "+props.train.name);
+    alert("Ticket Booked for " + user.name + " on " + props.train.name);
+    window.location.reload(false);
   };
 
   const buttonVisiblity = () => {
@@ -19,10 +20,12 @@ const TrainItem = (props) => {
 
   return (
     <div className="train-item">
+      <h4 id="start-destination">Train Number: {props.train.trainId}</h4>
       <h2 id="train-name">{props.train.name}</h2>
       <h4 id="start-destination">
         From : {props.train.startpoint} - To: {props.train.destination}
       </h4>
+      <h4 id="start-destination">Seat Availability: {props.train.seats}</h4>
       <div id="date-book">
         <h4 id="startDate">
           Starting Date : {props.train.startDate.slice(0, 10)}
