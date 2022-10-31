@@ -1,6 +1,8 @@
 // loading modules
 const jwt = require("jsonwebtoken");
 const user = require("../models/user");
+const train = require("../models/trains")
+const book = require("../models/book")
 const crypto = require("crypto");
 const { v4: uuidv4 } = require("uuid");
 require("dotenv").config();
@@ -196,6 +198,31 @@ const changePassword = async (req, res) => {
 
 };
 
+/*
+method: GET
+route: /api/user/booking
+description: get's all the users
+*/
+const getAllBooking = async (req, res) => {
+
+  const result = []
+
+  const allBookings = await book.find({})
+
+  for (const booking of allBookings) {
+    const getUser = await user.find({ _id: booking.user })
+    const getTrain = await train.find({ _id: booking.train })
+    const data = {
+      bookingId: booking._id,
+      userDetails: getUser,
+      trainDetails: getTrain,
+    }
+    result.push(data)
+  }
+
+  return res.status(200).send(result)
+};
+
 // exporting the modules
 module.exports = {
   createUser,
@@ -204,4 +231,5 @@ module.exports = {
   deleteUser,
   returnCurrentUser,
   changePassword,
+  getAllBooking,
 };
