@@ -1,13 +1,14 @@
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as api from "../../api";
 import "./Admin.css";
 import Login from "../User/Login";
 
-export default (props) => {
+const Admin = (props) => {
   const user = useSelector((state) => state.user);
   const [deleteField, setDeleteField] = useState("");
   const [createFields, setCreateFields] = useState({
+    number: "",
     name: "",
     destination: "",
     startPoint: "",
@@ -19,6 +20,7 @@ export default (props) => {
   const createSubmit = (e) => {
     e.preventDefault();
     api.createTrain(
+      createFields.number,
       createFields.name,
       createFields.destination,
       createFields.startPoint,
@@ -27,6 +29,7 @@ export default (props) => {
       createFields.price
     );
     setCreateFields({
+      number: "",
       name: "",
       destination: "",
       startPoint: "",
@@ -34,20 +37,32 @@ export default (props) => {
       reachDate: "",
       price: "",
     });
+    alert("Train created");
   };
 
   const deleteClick = (e) => {
     e.preventDefault();
     console.log(deleteField);
     api.deleteTrain(deleteField);
+    setDeleteField("");
+    alert("Train deleted");
   };
 
   if (user.is_admin) {
     return (
       <div className="admin-container">
-        <h1 id="welcome-admin">Welcome Administrator</h1>
+        <h1 className="heading">Welcome Administrator</h1>
         <form className="create-train-form">
-          <h2> Create Train</h2>
+          <h2 className="heading"> Create Train</h2>
+          <input
+            onChange={(e) =>
+              setCreateFields({ ...createFields, number: e.target.value })
+            }
+            value={createFields.number}
+            placeholder="Train Number"
+            type="number"
+            required
+          />
           <input
             onChange={(e) =>
               setCreateFields({ ...createFields, name: e.target.value })
@@ -55,6 +70,7 @@ export default (props) => {
             value={createFields.name}
             placeholder="Train Name"
             type="text"
+            required
           />
           <input
             onChange={(e) =>
@@ -63,6 +79,7 @@ export default (props) => {
             value={createFields.destination}
             placeholder="Destination"
             type="text"
+            required
           />
           <input
             onChange={(e) =>
@@ -71,6 +88,7 @@ export default (props) => {
             value={createFields.startPoint}
             placeholder="Start Point"
             type="text"
+            required
           />
           <input
             onChange={(e) =>
@@ -79,6 +97,7 @@ export default (props) => {
             value={createFields.startDate}
             placeholder="Start Date"
             type="date"
+            required
           />
           <input
             onChange={(e) =>
@@ -87,6 +106,7 @@ export default (props) => {
             value={createFields.reachDate}
             placeholder="Reach Date"
             type="date"
+            required
           />
           <input
             onChange={(e) =>
@@ -95,16 +115,18 @@ export default (props) => {
             value={createFields.price}
             placeholder="Price"
             type="text"
+            required
           />
           <button onClick={createSubmit}>Create</button>
         </form>
         <form className="delete-train-form">
-          <h2>Delete Train</h2>
+          <h2 className="heading">Delete Train</h2>
           <input
             value={deleteField}
             onChange={(e) => setDeleteField(e.target.value)}
-            placeholder="Train ID"
+            placeholder="Train Number"
             type="text"
+            required
           />
           <button onClick={deleteClick}>Delete</button>
         </form>
@@ -116,3 +138,5 @@ export default (props) => {
     return <Login />;
   }
 };
+
+export default Admin;

@@ -1,53 +1,74 @@
-//import {} from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { useSelector } from "react-redux";
 import "./navbar.css";
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../actions/user";
-import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const user = useSelector((state) => state.user);
-
-  const login = () => {
-    if (!user.name) {
-      return (
-        <div>
-          <Link id="link" to="/login">
-            Login
-          </Link>
-          <Link id="link" to="/signup">
-            Signup
-          </Link>
+  if (user.name && !user.is_admin) {
+    return (
+      <div className="parent-container">
+        <div className="navbar-container">
+          <nav className="navbar">
+            <ul className="nav-list">
+              <Link to="/">
+                <h3>Home</h3>
+              </Link>
+              <Link to="/logout">
+                <h3>Logout</h3>
+              </Link>
+              <Link to="/profile">
+                <h3>Profile</h3>
+              </Link>
+            </ul>
+          </nav>
         </div>
-      );
-    } else {
-      return (
-        <div>
-          <Link id="link" to="/logout">
-            Logout
-          </Link>
-          <p id="username">
-            Hey{" "}
-            <Link id="link" to="/profile">
-              {user.name}
-            </Link>
-          </p>
-        </div>
-      );
-    }
-  };
-
-  return (
-    <div className="navbar-container">
-      <div className="navbar">
-        {/* Home Link */}
-        <Link id="link" to="/">
-          Home
-        </Link>
-
-        {login()}
+        <hr className="nav-divider" />
       </div>
-      <div className="lowerDesign"></div>
+    );
+  } else if (user.name && user.is_admin) {
+    return (
+      <div className="parent-container">
+        <div className="navbar-container">
+          <nav className="navbar">
+            <ul className="nav-list">
+              <Link to="/">
+                <h3>Home</h3>
+              </Link>
+              <Link to="/admin">
+                <h3>Admin Console</h3>
+              </Link>
+              <Link to="/logout">
+                <h3>Logout</h3>
+              </Link>
+              <Link to="/profile">
+                <h3>Profile</h3>
+              </Link>
+            </ul>
+          </nav>
+        </div>
+        <hr className="nav-divider" />
+      </div>
+    );
+  }
+  return (
+    <div className="parent-container">
+      <div className="navbar-container">
+        <nav className="navbar">
+          <ul className="nav-list">
+            <Link to="/">
+              <h3>Home</h3>
+            </Link>
+            <Link to="/login">
+              <h3>Login</h3>
+            </Link>
+            <Link to="/signup">
+              <h3>Sign Up</h3>
+            </Link>
+          </ul>
+        </nav>
+      </div>
+      <hr className="nav-divider" />
     </div>
   );
 };

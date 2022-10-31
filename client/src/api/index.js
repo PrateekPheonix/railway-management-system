@@ -74,6 +74,7 @@ export const register = async (name, email, password, phone) => {
 };
 
 export const createTrain = async (
+  number,
   name,
   destination,
   startpoint,
@@ -84,6 +85,7 @@ export const createTrain = async (
   const { data } = await axios.post(
     url + "train",
     {
+      number,
       name,
       destination,
       startpoint,

@@ -2,7 +2,7 @@ import "./Signup.css";
 import { useState } from "react";
 import { register } from "../../api";
 
-export default () => {
+const Signup = () => {
   const [fields, setFields] = useState({
     name: "",
     email: "",
@@ -119,3 +119,5 @@ export default () => {
     </div>
   );
 };
+
+export default Signup;

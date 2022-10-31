@@ -2,10 +2,11 @@ import { useState } from "react";
 import { login } from "../../actions/user";
 import { useDispatch } from "react-redux";
 import "./Login.css";
+import {useHistory} from 'react-router-dom';
 
-export default () => {
+const Login = () => {
   const dispatch = useDispatch();
-
+  const history = useHistory();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -34,6 +35,7 @@ export default () => {
       email: "",
       password: "",
     });
+    history.push('/');
   };
 
   return (
@@ -57,3 +59,5 @@ export default () => {
     </div>
   );
 };
+
+export default Login;
