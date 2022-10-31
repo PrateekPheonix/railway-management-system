@@ -4,6 +4,7 @@ import { getBooks } from "../../actions/book";
 import BookDetail from "./BookDetail";
 import * as api from "../../api";
 import "./Profile.css";
+import ChangePassword from "../ChangePassword/ChangePassword";
 
 const Profile = () => {
   const user = useSelector((state) => state.user);
@@ -29,6 +30,7 @@ const Profile = () => {
         <h2 id="profile-name">{user.name}</h2>
         <h2 className="user-info">Email : {user.email}</h2>
         <h2 className="user-info">Phone Number : {user.phone}</h2>
+        <ChangePassword />
         <h2 id="trains-booked">Trains Booked: </h2>
         {filt_books.map((book) => {
           return <BookDetail key={book._id} book={book} onDelete={onDelete} />;
