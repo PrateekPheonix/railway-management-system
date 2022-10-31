@@ -5,7 +5,7 @@ import BookDetail from "./BookDetail";
 import * as api from "../../api";
 import "./Profile.css";
 
-export default () => {
+const Profile = () => {
   const user = useSelector((state) => state.user);
   const books = useSelector((state) => state.books);
   const dispatch = useDispatch();
@@ -39,3 +39,5 @@ export default () => {
     return <h1>Not Logged In</h1>;
   }
 };
+
+export default Profile;

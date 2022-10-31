@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { login } from "../../actions/user";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import {useHistory} from 'react-router-dom';
 
-export default () => {
+const Login = () => {
   const dispatch = useDispatch();
-
+  const history = useHistory();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -29,14 +29,13 @@ export default () => {
   };
 
   const onSubmit = (e) => {
-    // let navigate = useNavigate();
     e.preventDefault();
     dispatch(login(form.email, form.password));
     setForm({
       email: "",
       password: "",
     });
-    // navigate("/");
+    history.push('/');
   };
 
   return (
@@ -60,3 +59,5 @@ export default () => {
     </div>
   );
 };
+
+export default Login;
