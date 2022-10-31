@@ -26,6 +26,19 @@ export const logoutUser = async () => {
   });
 };
 
+export const changePassword = async (currPass, newPass) => {
+  return await axios.get(
+    url + "user/changepass",
+    {
+      currPass,
+      newPass,
+    },
+    {
+      withCredentials: true,
+    }
+  );
+};
+
 export const checkUser = async () => {
   return await axios.get(url + "user/return/current", {
     withCredentials: true,
