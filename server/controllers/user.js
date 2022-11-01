@@ -199,7 +199,7 @@ const changePassword = async (req, res) => {
 };
 
 /*
-method: GET
+method: POST
 route: /api/user/booking
 description: get's all the users
 */
