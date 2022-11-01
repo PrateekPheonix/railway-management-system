@@ -38,14 +38,14 @@ const Navbar = () => {
               <Link to="/admin">
                 <h3>Admin Console</h3>
               </Link>
-              <Link to="/logout">
-                <h3>Logout</h3>
-              </Link>
               <Link to="/profile">
                 <h3>Profile</h3>
               </Link>
               <Link to="/viewallbookings">
                 <h3>View All Bookings</h3>
+              </Link>
+              <Link to="/logout">
+                <h3>Logout</h3>
               </Link>
             </ul>
           </nav>
