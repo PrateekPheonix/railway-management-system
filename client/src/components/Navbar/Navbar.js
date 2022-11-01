@@ -14,11 +14,11 @@ const Navbar = () => {
               <Link to="/">
                 <h3>Home</h3>
               </Link>
-              <Link to="/logout">
-                <h3>Logout</h3>
-              </Link>
               <Link to="/profile">
                 <h3>Profile</h3>
+              </Link>
+              <Link to="/logout">
+                <h3>Logout</h3>
               </Link>
             </ul>
           </nav>
