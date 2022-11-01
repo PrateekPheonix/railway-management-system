@@ -118,9 +118,15 @@ export const createTrain = async (
   console.log(data);
 };
 
-export const deleteTrain = async (id) => {
-  const { data } = await axios.delete(url + "train", {
-    trainId: { id },
-  });
+export const deleteTrain = async (trainId) => {
+
+  const { data } = await axios({
+    method: 'delete',
+    url: url + "train",
+    withCredentials: true,
+    data: {
+      trainId
+    },
+  })
   console.log(data);
 };
