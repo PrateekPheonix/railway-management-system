@@ -200,7 +200,7 @@ const changePassword = async (req, res) => {
 
 /*
 method: POST
-route: /api/user/booking
+route: /api/user/book
 description: get's all the users
 */
 const getAllBooking = async (req, res) => {

@@ -5,8 +5,11 @@ import { getAllBookings } from "../../api";
 const ViewAllBookings = () => {
   const user = useSelector((state) => state.user);
   const bookings = getAllBookings();
+  bookings.then((result) => {
+    console.log(result)
+  })
   console.log(bookings);
-  
+
   return (
     <div className="view-all-bookings-container">
       <h1 className="heading">All Bookings</h1>
