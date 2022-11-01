@@ -1,5 +1,7 @@
 .notfound-container {
-  background-color: black;
+  background-color: rgb(255, 255, 255);
+  opacity: 0.8;
+  border-radius: 0.5em;
   margin-top: 2em;
   padding: 0 0 5em 0;
   width: 40em;

@@ -130,3 +130,10 @@ export const deleteTrain = async (trainId) => {
   })
   console.log(data);
 };
+
+export const getAllBookings = async () => {
+  const { data } = await axios.get(url + "user/booking", {
+    withCredentials: true,
+  });
+  return data;
+}

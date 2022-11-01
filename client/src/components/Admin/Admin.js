@@ -28,7 +28,7 @@ const Admin = (props) => {
       createFields.startDate,
       createFields.reachDate,
       createFields.seats,
-      createFields.price,
+      createFields.price
     );
     setCreateFields({
       trainId: "",
@@ -129,7 +129,7 @@ const Admin = (props) => {
             type="text"
             required
           />
-          <button onClick={createSubmit}>Create</button>
+          <button onSubmit={createSubmit}>Create</button>
         </form>
         <form className="delete-train-form">
           <h2 className="heading">Delete Train</h2>
@@ -140,7 +140,7 @@ const Admin = (props) => {
             type="text"
             required
           />
-          <button onClick={deleteClick}>Delete</button>
+          <button onSubmit={deleteClick}>Delete</button>
         </form>
       </div>
     );

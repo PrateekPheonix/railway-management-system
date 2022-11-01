@@ -14,6 +14,7 @@ import Signup from "./components/User/Signup";
 import Admin from "./components/Admin/Admin";
 import NotFound from "./components/NotFound/NotFound";
 import ChangePassword from "./components/ChangePassword/ChangePassword";
+import ViewAllBookings from "./components/ViewAllBookings/ViewAllBookings";
 
 const App = () => {
   const token = Cookies.get("token");
@@ -61,7 +62,9 @@ const App = () => {
         <Route exact path="/changepassword">
           <ChangePassword />
         </Route>
-
+        <Router exact path="/viewallbookings">
+          <ViewAllBookings />
+        </Router>
         <Route component={NotFound} />
       </Switch>
     </Router>

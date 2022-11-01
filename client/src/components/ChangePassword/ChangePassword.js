@@ -6,15 +6,21 @@ const ChangePassword = () => {
   const user = useSelector((state) => state.user);
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const createSubmit = (e) => {
     e.preventDefault();
-    const res = api.changePassword(password, newPassword);
-    // console.log(res);
-    setPassword("");
-    setNewPassword("");
-    if (res.status === 200) {
-      alert("Password changed");
+    let res = null;
+    if (newPassword === confirmPassword) {
+      res = api.changePassword(password, newPassword);
+      setPassword("");
+      setNewPassword("");
+      setConfirmPassword("");
+      if (res.status === 200) {
+        alert("Password changed");
+      }
+    } else {
+      alert("Passwords do not match");
     }
   };
 
@@ -34,6 +40,13 @@ const ChangePassword = () => {
             onChange={(e) => setNewPassword(e.target.value)}
             value={newPassword}
             placeholder="New Password"
+            type="password"
+            required
+          />
+          <input
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={confirmPassword}
+            placeholder="Confirm New Password"
             type="password"
             required
           />
