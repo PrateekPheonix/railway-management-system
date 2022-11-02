@@ -1,8 +1,10 @@
 import "./Signup.css";
 import { useState } from "react";
 import { register } from "../../api";
+import {useHistory} from 'react-router-dom';
 
 const Signup = () => {
+  const history = useHistory();
   const [fields, setFields] = useState({
     name: "",
     email: "",
@@ -68,7 +70,7 @@ const Signup = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (fields.password == fields.confirm) {
+    if (fields.password === fields.confirm) {
       register(fields.name, fields.email, fields.password, fields.phone);
       setFields({
         name: "",
@@ -77,45 +79,53 @@ const Signup = () => {
         password: "",
         confirm: "",
       });
+    history.push('/login');
     } else {
       console.log("passwords don't match");
     }
   };
 
   return (
-    <div className="signup-form">
+    <div>
+      <form className="signup-form">
       <h3>Sign-Up</h3>
       <input
         value={fields.name}
         onChange={nameChange}
         type="text"
         placeholder="Name"
+        required
       />
       <input
         value={fields.email}
         onChange={emailChange}
         type="text"
         placeholder="Email"
+        required
       />
       <input
         value={fields.phone}
         onChange={phoneChange}
         type="text"
         placeholder="Phone No"
+        required
       />
       <input
         value={fields.password}
         onChange={passwordChange}
         type="password"
         placeholder="Password"
+        required
       />
       <input
         value={fields.confirm}
         onChange={confirmChange}
         type="password"
         placeholder="Confirm Password"
+        required
       />
-      <button onClick={onSubmit}>Register</button>
+      <button onSubmit={onSubmit}>Register</button>
+      </form>
     </div>
   );
 };

@@ -28,7 +28,7 @@ const Login = () => {
     });
   };
 
-  const onSubmit = (e) => {
+  const onsubmit = (e) => {
     e.preventDefault();
     dispatch(login(form.email, form.password));
     setForm({
@@ -47,14 +47,16 @@ const Login = () => {
           onChange={onEmailChange}
           type="email"
           placeholder="Email"
+          required
         />
         <input
           value={form.password}
           onChange={onPasswordChange}
           type="password"
           placeholder="Password"
+          required
         />
-        <button onClick={onSubmit}>Login</button>
+        <button onSubmit={onsubmit}>Login</button>
       </form>
     </div>
   );
