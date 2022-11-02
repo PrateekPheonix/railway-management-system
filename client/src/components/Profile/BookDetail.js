@@ -22,7 +22,7 @@ const BookDetail = (props) => {
         onClick={props.onDelete.bind(this, props.book._id)}
         id="delete-button"
       >
-        X
+        Cancel Booking
       </button>
     </div>
   );
