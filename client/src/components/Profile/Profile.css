@@ -13,7 +13,6 @@
   font-family: sans-serif;
 }
 
-
 .profile-container > img {
   margin: -7em auto auto auto;
   top: 0em;
@@ -22,13 +21,12 @@
   background-color: rgb(241, 49, 49);
 }
 
-
 #trains-booked {
   margin-top: 1em;
   color: black;
 }
 
-.profile{
+.profile {
   display: flex;
   flex-direction: column;
   background-color: aliceblue;
@@ -39,25 +37,30 @@
   padding: 1em;
 }
 
-.user-info{
+.user-info {
   font-size: 1.5em;
   padding: 0.5em;
 }
 
-#changePass{
+#changePass {
   text-decoration: none;
   background-color: coral;
   border-radius: 1em;
   color: aliceblue;
 }
 
-.books
-{
+.books {
   display: flex;
   flex-direction: column;
 }
 
-#trains-booked{
+#trains-booked {
   align-self: center;
   color: aliceblue;
+}
+
+#download{
+  width: 20em;
+  align-self: center;
+  margin:1em;
 }
