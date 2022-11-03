@@ -29,4 +29,12 @@ This Repository Contains the Implementation of Railway Management System Built w
   
   - Postman - for API Testing
 
+## Team Members:
+- Prateek Niket
+- Saksham Singh
+- Aviral Verma
+- Pratyush Khare
+- Abhishek Kanojia
+- Shyam Agarwal
+
 # Thank You
