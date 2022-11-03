@@ -1,6 +1,5 @@
-# Railway Mangement System - MERN and Redux
+# Railway Mangement System
 
-<img src="https://images.hdqwalls.com/wallpapers/train-mountains-illustration-minimalistic-9l.jpg" title="Railway Art" alt="Image Not Available" data-align="center">
 
 ## Description
 
@@ -8,11 +7,9 @@ This Repository Contains the Implementation of Railway Management System Built w
 
 ## Functionalities
 
-![functionalities](./Images/functionalities.png)
-
-- **End User :** Can **Create/Delete** and **Login/Logout** of account and **Book/Cancel** Trains
-
-- **Admin User :** All the powers of the End user and can also **Create / Remove / Update / Get Details of** Trains
+- **Guest User:** Can **View** ticket
+- **Logged In User :** Can **View/Book/Cancel** ticket, **Change Password** and **Login/Logout** of account.
+- **Admin User :** All the powers of the End user and can also **Create / Remove**Trains & **View** all the tickets booked.
 
 ## Tech Stack
 
@@ -31,7 +28,5 @@ This Repository Contains the Implementation of Railway Management System Built w
 - **Other Additional Applications Include :**
   
   - Postman - for API Testing
-  
-  - ROBO3T - Mongo Visualizer
 
 # Thank You
