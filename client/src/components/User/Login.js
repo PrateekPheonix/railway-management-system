@@ -2,7 +2,7 @@ import { useState } from "react";
 import { login } from "../../actions/user";
 import { useDispatch } from "react-redux";
 import "./Login.css";
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -29,13 +29,15 @@ const Login = () => {
   };
 
   const onsubmit = (e) => {
+    console.log("HR")
     e.preventDefault();
     dispatch(login(form.email, form.password));
     setForm({
       email: "",
       password: "",
     });
-    history.push('/');
+    console.log("HR")
+    history.push('/')
   };
 
   return (

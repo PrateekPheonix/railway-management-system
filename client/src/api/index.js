@@ -8,6 +8,7 @@ export const getTrains = async () => {
 };
 
 export const loginUser = async (email, password) => {
+  console.log(email, password)
   return await axios.post(
     url + "auth/login",
     {
