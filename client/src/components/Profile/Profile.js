@@ -1,8 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { getBooks } from "../../actions/book";
 import BookDetail from "./BookDetail";
-import html2pdf from "html2pdf.js";
 import * as api from "../../api";
 import "./Profile.css";
 import { Link } from "react-router-dom";
@@ -14,23 +13,10 @@ const Profile = () => {
 
   const down = useRef();
 
-  const onDelete = (id) => {
+  const onDelete = useCallback((id) => {
     const data = api.deleteBook(id);
     console.log(data);
-  };
-
-  const pdf = () => {
-    const ticket = down.current;
-    console.log(ticket);
-    var opt = {
-      margin: 1,
-      filename: "ticket.pdf",
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-    };
-    html2pdf().from(ticket).set(opt).save();
-  };
+  }, []);
 
   useEffect(() => {
     dispatch(getBooks());
@@ -54,10 +40,7 @@ const Profile = () => {
           </div>
           <div ref={down} className="books">
             <h2 id="trains-booked">Trains Booked </h2>
-              <button onClick={pdf} id="download">
-                Print Ticket
-              </button>
-          
+
             {filt_books.map((book) => {
               return (
                 <BookDetail key={book._id} book={book} onDelete={onDelete} />

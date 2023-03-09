@@ -68,7 +68,7 @@ const Signup = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (fields.password == fields.confirm) {
+    if (fields.password === fields.confirm) {
       register(fields.name, fields.email, fields.password, fields.phone);
       setFields({
         name: "",

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default (user = {}, action) => {
   switch (action.type) {
     case "LOGIN_USER":

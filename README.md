@@ -1,6 +1,5 @@
 # Railway Mangement System
 
-
 ## Description
 
 This Repository Contains the Implementation of Railway Management System Built with MERN. Railway Management System is an application built for users to book trains and administrators to run and manage trains.
@@ -26,15 +25,12 @@ This Repository Contains the Implementation of Railway Management System Built w
 - **Mongoose** - ORM for Database
 
 - **Other Additional Applications Include :**
-  
+
   - Postman - for API Testing
 
-## Team Members:
-- Prateek Niket
-- Saksham Singh
-- Aviral Verma
-- Pratyush Khare
-- Abhishek Kanojia
-- Shyam Agarwal
+## Admin Id
+
+Email - admin@gmail.com
+Pass - admin123
 
 # Thank You

@@ -10,7 +10,7 @@ const BookDetail = (props) => {
       .getTrain(props.book.train)
       .then((res) => setTrain(res))
       .catch((err) => console.log(err));
-  }, [setTrain]);
+  }, [props.book.train, setTrain]);
 
   return (
     <div className="book-detail-item">
