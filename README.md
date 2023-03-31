@@ -33,4 +33,48 @@ This Repository Contains the Implementation of Railway Management System Built w
 Email - admin@gmail.com
 Pass - admin123
 
+## Routes
+
+#### AUTH ROUTES
+
+POST: "/api/auth/login"
+
+GET: "/api/auth/logout"
+
+#### BOOKING ROUTES
+
+POST: "/api/book/"
+
+GET: "/api/book/"
+
+GET: "/api/book/:id"
+
+DELETE: "/api/book/:id"
+
+#### USER ROUTES
+
+POST: "/api/user/"
+
+GET: "/api/user/"
+
+GET: "/api/user/book"
+
+GET: "/api/user/:id"
+
+DELETE: "/api/user/:id"
+
+GET: "/api/user/return/current"
+
+POST: "/api/user/changepass"
+
+#### TRAIN ROUTES
+
+GET: "/api/train/"
+
+POST: "/api/train/"
+
+GET: "/api/train/:id"
+
+DELETE: "/api/train/"
+
 # Thank You
